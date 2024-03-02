@@ -1,3 +1,4 @@
+% the main thing i'm concerned about is how to get the multiplayer thing to work because each of the messages that show up when a player wins/loses has to be individual
 function blackjack()
 %the cards can be created through appdesginer so i'm not intializing them
  deck = deck(randperm(length(deck))); % shuffle deck
@@ -59,7 +60,7 @@ function blackjack()
     player3s = sum(player3);
     dealers = sum(dealer);
 
-    
+    %each player winning/losing is individual and only depends on the dealer
     if player1s > 21
         disp('Dealer wins.');
     elseif dealers > 21 %display for all players
