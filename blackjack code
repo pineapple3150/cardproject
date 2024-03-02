@@ -1,0 +1,98 @@
+function blackjack()
+%the cards can be created through appdesginer so i'm not intializing them
+ deck = deck(randperm(length(deck))); % shuffle deck
+
+ %everyone starts off with nothing, can intialize it so that it looks like
+ %that on the screen
+ player1 = []; 
+ player2 = [];
+ player3 = [];
+ dealer = [];
+    
+    % Deal the initial hands, again should link up with each player's
+    % screen and only show them their hand
+    player1 = [player1, deal_card(deck)];
+    player2 = [player2, deal_card(deck)];
+    player3 = [player3, deal_card(deck)];
+    dealer= [dealer, deal_card(deck)];
+    player1 = [player1, deal_card(deck)];
+    player2 = [player2, deal_card(deck)];
+    player3 = [player3, deal_card(deck)];
+    dealer = [dealer, deal_card(deck)]; %this one should be upside down on the screen because its the second daelers card
+
+    while sum(player1) <= 21 %im not sure how to make it so the player is able to hit/stand through buttons, this also needs to happen for each player
+        choice = input('Do you want to hit or stand?');
+        if choice == 'h' %need to change so that the press of hit through the game allows them to hit
+            player1 = [player1, deal_card(deck)];
+            disp('Your hand:');
+            display_hand(player1);
+        elseif choice == 's' %need to change so that the press of stand through the game allows them to stand
+            break
+        end
+     while sum(player2) <= 21 %im not sure how to make it so the player is able to hit/stand through buttons, this also needs to happen for each player
+        choice = input('Do you want to hit or stand?');
+        if choice == 'h' %need to change so that the press of hit through the game allows them to hit
+            player2 = [player2, deal_card(deck)];
+            disp('Your hand:');
+            display_hand(player2);
+        elseif choice == 's' %need to change so that the press of stand through the game allows them to stand
+            break
+        end
+     while sum(player3) <= 21 %im not sure how to make it so the player is able to hit/stand through buttons, this also needs to happen for each player
+        choice = input('Do you want to hit or stand?');
+        if choice == 'h' %need to change so that the press of hit through the game allows them to hit
+            player3 = [player3, deal_card(deck)];
+            disp('Your hand:');
+            display_hand(player3);
+        elseif choice == 's' %need to change so that the press of stand through the game allows them to stand
+            break
+        end
+
+   
+    while sum(dealer) < 17 %dealer plays
+        dealer = [dealer, deal_card(deck)];
+    end
+    
+    %summing up the scores of all players
+    player1s = sum(player1);
+    player2s = sum(player2);
+    player3s = sum(player3);
+    dealers = sum(dealer);
+
+    
+    if player1s > 21
+        disp('Dealer wins.');
+    elseif dealers > 21 %display for all players
+        disp('You win!');
+    elseif player1s > dealers
+        disp('You win!');
+    elseif player1s < dealers
+        disp('Dealer wins.');
+    else
+        disp('Its a tie!');
+    end
+
+    if player2s > 21
+        disp('Dealer wins.');
+    elseif dealers > 21 %display for all players
+        disp('You win!');
+    elseif player2s > dealers
+        disp('You win!');
+    elseif player2s < dealers
+        disp('Dealer wins.');
+    else
+        disp('Its a tie!');
+    end
+
+    if player3s > 21
+        disp('Dealer wins.');
+    elseif dealers > 21 %display for all players
+        disp('You win!');
+    elseif player3s > dealers
+        disp('You win!');
+    elseif player3s < dealers
+        disp('Dealer wins.');
+    else
+        disp('Its a tie!');
+    end
+end
